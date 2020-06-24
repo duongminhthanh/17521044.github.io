@@ -1,0 +1,100 @@
+@import "xemhang.css";
+
+.divname{
+    display: block;
+    float: left;
+    width: 100%;
+    background: #00bfbf;
+    color: white;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    text-indent: 20px;
+}
+
+.thongtinkhachhang{
+    display: block;
+    float: left;
+    margin-top: 20px;
+    min-height: 200px;
+    width: 800px; 
+}
+
+table{
+    width:100%;
+}
+
+table, td, th, tr{
+    border: 2px solid #00bfbf;
+    border-collapse: collapse;
+    height: 40px;
+    text-align: center;
+}
+
+input{
+    width: 88%;
+    height: 90%;
+    max-height: 90%;
+    font-size: 20px;
+}
+
+.actionbtn{
+    width:10%;
+    background: #00bfbf;
+    color: white;
+    text-align: center;
+    border: 1px solid #00bfbf;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.actionbtn:hover{
+    background: #00bfbf;
+}
+
+.doimatkhau{
+    display: block;
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 380px;
+}
+
+input[type=password]{
+    width: 96%;
+}
+
+.passbtn{
+    width:99%;
+    background: #00bfbf;
+    color: white;
+    text-align: center;
+    border: 1px solid #00bfbf;
+    height: 99%;
+    cursor: pointer;
+}
+
+.thongtinhoadon{
+    display: block;
+    float: left;
+    margin-top: 20px;
+    width: 100%; 
+    background-color: #DCDCDC;
+}
+
+.hoadon{
+    display: block;
+    float: left;
+    min-height: 50px;
+    margin-top: 10px;
+    width: 49%;
+}
+
+.cthd{
+    display: block;
+    float: right;
+    min-height: 50px;
+    margin-top: 10px;
+    width: 49%;
+}

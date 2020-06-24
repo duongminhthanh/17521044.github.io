@@ -1,0 +1,61 @@
+@import "../public/trangchu.css";
+
+.content{
+    margin-top: 20px;
+}
+
+.mainzone {
+    float: left;
+    min-height: 200px;
+    width: 880px;
+    margin-left: 20px;
+}
+
+.mainzone p{
+    text-align: center;
+    line-height: 200px;
+    font-size: 30px;
+    font-style: italic;
+    background-color: #00bfbf;
+}
+
+.searchbar{
+    width: 880px;
+}
+
+.searchbar input[type="text"]{
+    width: 840px;
+}
+
+.navbar ul{
+    overflow: hidden;
+}
+
+.navbar ul .list{
+    width: 290px;
+    background: white;
+}
+
+.navbar ul .list:hover{
+    background: white;
+}
+
+.list .subnav{
+    display: none;
+}
+
+.subnav li{
+    display: block;
+    float: left;
+    width: 280px;
+}
+
+.subnav li a{
+    display: block;
+    float: left;
+    width: 280px;
+}
+
+.navbar ul li a:hover{
+    color: black !important;
+}

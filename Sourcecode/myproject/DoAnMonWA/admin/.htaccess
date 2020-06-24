@@ -1,0 +1,5 @@
+AuthUserFile "C:\xampp\htdocs\myproject\DoAnMonWA\admin\.htpasswd"
+AuthType Basic
+AuthName "My Secret Folder"
+Require valid-user
+AddType application/x-httpd-php .htm .html

@@ -1,0 +1,143 @@
+<?php session_start(); ?>
+<?php
+    if(!isset($_SESSION['cart'])) 
+        { 
+            $_SESSION['cart']=array(); 
+        } 
+?>
+
+<html>
+    <head>
+        <title>Giỏ hàng</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="tanggiamsoluong.js"></script>
+        <link rel="stylesheet" href="giohang.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="topbanner"></div>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                      </div>
+                    
+                    <div style="float:left; border:none; background-color: #00bfbf;">
+                    </div>
+                    
+                   <?php 
+                        if(!isset($_SESSION['MAKH'])||!isset($_SESSION['TENKH'])){
+                            echo "<div style='float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='login.html'>Đăng nhập</a> | ";
+                            echo "<a style='color:black;' href='signup.html'>Đăng ký</a>";
+                            echo "</div>";
+                        }else{
+                            echo "<div style=' float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='thongtinkhachhang.html'>".$_SESSION['TENKH']."</a> | ";
+                            echo "<a style='color:white;' href='php/dangxuat.php'>Đăng xuất</a>";
+                            echo "</div>";
+                        }
+                    ?>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="trangchu.html"><div class="headerlogo"></div></a>
+                <!--<div class="searchbar">
+                    <form action="#">
+                    <input type="text" placeholder=" Tìm kiếm...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>-->
+                <?php
+                    $tong = 0;
+                    foreach($_SESSION['cart'] as $sl){
+                        $tong += $sl;
+                    }
+                ?>
+                <div class="giohang">
+                    <a href="giohang.html">
+                        <div class="name">GIỎ HÀNG: &nbsp;</div>
+                        <span class="amount"><?php if($tong=='undefined'){echo 0;}else {echo $tong;} ?></span>
+                        <div class="carticon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <div class="navtitle">
+                        <div class="titleicon">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Danh Mục</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="xemhang.html?loai=ĐT">
+                                <div class="icon">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Điện Thoại</div>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="xemhang.html?loai=PK">
+                                <div class="icon">
+                                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Phụ Kiện</div>
+                            </a>
+                        </li>
+                        <script>
+                            function hotro(){
+                                alert('Liên hệ qua gmail: 17521238@gm.uit.edu.vn để được hỗ trợ!');
+                            }
+                        </script>
+                        <li>
+                            <a href="#" onclick='return hotro()'>
+                                <div class="icon">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Hỗ Trợ</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-top:20px;background:#DCDCDC;color:#00bfbf;"><h1>GIỎ HÀNG</h1></div>
+                
+                <div class="chitietgiohang">
+                    <table>
+                        <tr>
+                            <th>Tên sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Giá</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        <?php include 'php/hienthigiohang.php'; ?>
+                    </table>
+                    
+                </div>
+                <div class="ajax_rs"></div>
+                <div class="tinhtien">
+                    Thành tiền: <span class="tongtien" style="color: #00bfbf;font-size: 25px;"><?php echo number_format($thanhtien , 0, ',', '.')."(VNĐ)" ?></span><br>
+                    (đã bao gồm VAT nếu có)
+                    <a href="thongtinhoadon.html"><input class="addbtn" type="button" value="Tính Tiền"/></a>
+                </div>
+                
+            </div>
+
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,221 @@
+<?php session_start(); ?>
+<?php
+    if(!isset($_SESSION['cart'])) 
+        { 
+            $_SESSION['cart']=array(); 
+        } 
+?>
+<html>
+    <head>
+        <title>Thông tin hóa đơn</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="thongtinhoadon.js"></script>
+        <link rel="stylesheet" href="thongtinhoadon.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="topbanner"></div>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                        </div>
+                    
+                    <div style="float:left; border:none; background-color: #00bfbf;">
+                    </div>
+                    
+                    <?php 
+                        if(!isset($_SESSION['MAKH'])||!isset($_SESSION['TENKH'])){
+                            echo "<div style='float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='login.html'>Đăng nhập</a> | ";
+                            echo "<a style='color:black;' href='signup.html'>Đăng ký</a>";
+                            echo "</div>";
+                        }else{
+                            echo "<div style=' float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='thongtinkhachhang.html'>".$_SESSION['TENKH']."</a> | ";
+                            echo "<a style='color:white;' href='php/dangxuat.php'>Đăng xuất</a>";
+                            echo "</div>";
+                        }
+                    ?>
+                
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="trangchu.html"><div class="headerlogo"></div></a>
+                <!--<div class="searchbar">
+                    <form action="#">
+                    <input type="text" placeholder=" Tìm kiếm...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>-->
+                <?php
+                    $tong = 0;
+                    foreach($_SESSION['cart'] as $sl){
+                        $tong += $sl;
+                    }
+                ?>
+                <div class="giohang">
+                    <a href="giohang.html">
+                        <div class="name">GIỎ HÀNG:&nbsp;</div>
+                        <span class="amount"><?php if($tong=='undefined'){echo 0;}else {echo $tong;} ?></span>
+                        <div class="carticon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <div class="navtitle">
+                        <div class="titleicon">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Danh Mục</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="xemhang.html?loai=ĐT">
+                                <div class="icon">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Điện Thoại</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="xemhang.html?loai=PK">
+                                <div class="icon">
+                                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Phụ Kiện</div>
+                            </a>
+                        </li>
+                        <script>
+                            function hotro(){
+                                alert('Liên hệ qua gmail: 17521238@gm.uit.edu.vn để được hỗ trợ!');
+                            }
+                        </script>
+                        <li onclick='return hotro()'>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Hỗ Trợ</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <script>
+                        function validateForm(e){
+                            var ten = $("input[name='tenkh']").val();
+                            var sdt = $("input[name='sdt']").val();
+                            var diachi = $("textarea[name='diachi']").val();
+                            if (ten == null || ten ==""){
+                                alert('Bạn chưa nhập tên!');
+                                e.preventDefault();  
+                                return false;
+                            }
+                            if (sdt == null || sdt ==""){
+                                alert('Bạn chưa nhập số điện thoại!');
+                                e.preventDefault();  
+                                return false;
+                            }
+                            var n = sdt.length;
+                            if(n!=10){
+                                alert('Số điện thoại phải đủ 10 số!');
+                                e.preventDefault();  
+                                return false;
+                            }
+                            if (diachi == null || diachi ==""){
+                                alert('Bạn chưa nhập địa chỉ!');
+                                e.preventDefault();  
+                                return false;
+                            }
+                        }
+                        var makh = "<?php if(isset($_SESSION['MAKH'])) echo $_SESSION['MAKH']; ?>";
+                </script>
+                
+                <div class='ajax_rs'></div>
+                <div style="margin-top:20px;">
+                    <div class="nhapthongtin">
+                        <form method="get" onsubmit="return validateForm(event)" action="php/hoantathoadon.php">
+                            <table class='thongtingiaohang'>
+                                <tr>
+                                    <td colspan="2" style="text-align: center;font-weight: bold;font-size:30px;">
+                                        Thông tin cá nhân:
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cách thức nhập thông tin giao hàng</td>
+                                    <td>
+                                        <select name='info'>
+                                            <option value='no' selected>Tự nhập thông tin</option>
+                                            <?php if(isset($_SESSION["MAKH"])){echo "<option value='yes'>Thông tin trong tài khoản (cần đăng nhập)</option>";} ?>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ten">Tên:</td>
+                                    <td><input type="text" name="tenkh"></td>
+                                </tr>
+                                <tr>
+                                    <td class="sodt">Số Điện Thoại:</td>
+                                    <td><input type="number" name="sdt"></td>
+                                </tr>
+                                <tr>
+                                    <td class="diachi" >Địa Chỉ Nhận Hàng:</td>
+                                    <td><textarea name="diachi" cols="35" rows="5" placeholder="Bạn muốn nhận ở đâu?" style="font-size: 20px"></textarea></td>
+                                </tr>
+                                <!--<tr>
+                                    <td class="ghichu">Ghi chú:</td>
+                                    <td><textarea cols="35" rows="5" placeholder="Bạn muốn nhắc nhở gì?" style="font-size: 20px"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"  style="text-align: center;font-weight: bold;font-size:30px;">Thông tin mặt hàng:</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="thongtinhoadon">
+                                            <i>Bạn chưa có sản phẩm nào</i>
+                                        </div>
+                                    </td>
+                                </tr>-->
+                                <tr><td colspan="2"><input class="addbtn" type="submit" value="Hoàn tất"></td></tr>
+                            </table>
+                        </form>
+                    </div>
+
+                    <div class="xemtruoc">
+                        <h1>Thông tin mặt hàng</h1>
+                        <hr>
+                        <table class='hienthigiohang'>
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Giá</th>
+                            </tr>
+                            <?php include 'php/hienthigiohang.php' ?>
+                            <?php
+                                echo "<tr><td colspan='2'><b>Thành tiền</b></td>";
+                                echo "<td><b>".number_format($thanhtien , 0, ',', '.')." VNĐ"."</b></td></tr>";
+                            ?>
+                        </table>
+                        
+                    </div>
+                    </div>
+                
+                
+            </div>
+            
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+        </div>
+    </body>
+</html>

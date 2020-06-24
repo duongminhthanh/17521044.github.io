@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <title>Đăng ký</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="signup.css" type="text/css">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="kiemtradangky.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    <body>
+        <script>
+            
+        </script>
+        <div class="signup-box">
+        <form method="post" onsubmit="return validateForm(event)" action='php/dangky.php'>
+            <table>
+                <tr><td colspan="2"><h1>Đăng Ký Tài Khoản</h1></td></tr>
+                <tr>
+                    <td>Nhắc Nhở: </td>
+                    <td><span class='nhacnho' style="padding:20px;">Kính chào quý khách!</span></td>
+                </tr>
+                <tr>
+                    <td>Họ Tên</td>
+                    <td>
+                        <div class="text-box"><input name='tenkh' type="text" placeholder="Nhập họ tên"/></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tên Đăng Nhập</td>
+                    <td><div class="text-box"><input class='tendn' name='tendn' type="text" placeholder="Nhập tên đăng nhập"/></div></td>
+                </tr>
+                <tr>
+                    <td>Mật Khẩu</td>
+                    <td><div class="text-box"><input class='pass' name='pass' type="password" placeholder="Nhập mật khẩu"/></div></td>
+                </tr>
+                <tr>
+                    <td>Nhập Lại Mật Khẩu</td>
+                    <td><div class="text-box"><input class='repass' name='repass' type="password" placeholder="Nhập lại mật khẩu"/></div></td>
+                </tr>
+                <tr>
+                    <td>Số Điện Thoại</td>
+                    <td><div class="text-box"><input class='sdt' name='sdt' type="number" placeholder="Nhập số điện thoại"/></div></td>
+                </tr>
+                <tr>
+                    <td>Ngày/Tháng/Năm Sinh</td>
+                    <td><div class="text-box"><input name='ngsinh' type="date" placeholder="Nhập Ngày Sinh"/></div></td>
+                </tr>
+                <tr>
+                    <td>Địa Chỉ Nhận Hàng</td>
+                    <td><div class="text-box"><input name='diachi' type="text" placeholder="Nhập Địa Chỉ"/></div></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><div class="text-box"><input class='email' name='email' type="text" placeholder="Nhập Email"/></div></td>
+                </tr>
+            </table>
+            <input class="btn" type="submit" value="Đăng ký!"/><br>
+        </form>
+            Đã có tài khoản? <a href="login.html" style="color:#DE1F1F"><i>Đăng nhập ngay</i></a> |
+            <a href="trangchu.html" style="color:#DE1F1F;"><i>VỀ TRANG CHỦ</i></a>
+        </div>
+    </body>
+</html>

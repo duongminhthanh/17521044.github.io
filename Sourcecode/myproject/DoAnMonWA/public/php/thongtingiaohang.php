@@ -1,0 +1,65 @@
+<?php
+    include 'connect.php';
+    $makh = $_GET['makh'];
+    $choice = $_GET['choice'];
+    if($choice=='yes'){
+        $sql = "select * from khachhang where makh=$makh";
+        $result=$conn->query($sql);
+        $row=$result->fetch_assoc();
+        echo "<tr>";
+        echo " <td colspan='2' style='text-align: center;font-weight: bold;font-size:30px;'>";
+        echo "Thông tin cá nhân:";
+        echo "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Cách thức nhập thông tin giao hàng</td>";
+        echo "<td>";
+        echo "<select name='info'>";
+        echo "<option value='yes' selected>Thông tin trong tài khoản (cần đăng nhập)</option>";
+        echo "<option value='no'>Tự nhập thông tin</option>";
+        echo "</select>";
+        echo "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td class='ten'>Tên:</td>";
+        echo "<td><input type='text' name='tenkh' value='".$row['TENKH']."'></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td class='sodt'>Số Điện Thoại:</td>";
+        echo "<td><input type='number' name='sdt' value='".$row['SDT']."'></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td class='diachi' >Địa Chỉ Nhận Hàng:</td>";
+        echo "<td><textarea name='diachi' cols='35' rows='5' placeholder='Bạn muốn nhận ở đâu?' style='font-size: 20px'>".$row['DIACHI']."</textarea></td>";
+        echo "</tr>";
+        echo "<tr><td colspan='2'><input class='addbtn' type='submit' value='Hoàn tất'></td></tr>";
+    }else if($choice=='no'){
+        echo "<tr>";
+        echo " <td colspan='2' style='text-align: center;font-weight: bold;font-size:30px;'>";
+        echo "Thông tin cá nhân:";
+        echo "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td>Cách thức nhập thông tin giao hàng</td>";
+        echo "<td>";
+        echo "<select name='info'>";
+        echo "<option value='yes'>Thông tin trong tài khoản (cần đăng nhập)</option>";
+        echo "<option value='no' selected>Tự nhập thông tin</option>";
+        echo "</select>";
+        echo "</td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td class='ten'>Tên:</td>";
+        echo "<td><input type='text' name='tenkh' value=''></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td class='sodt'>Số Điện Thoại:</td>";
+        echo "<td><input type='number' name='sdt' value=''></td>";
+        echo "</tr>";
+        echo "<tr>";
+        echo "<td class='diachi' >Địa Chỉ Nhận Hàng:</td>";
+        echo "<td><textarea name='diachi' cols='35' rows='5' placeholder='Bạn muốn nhận ở đâu?' style='font-size: 20px'></textarea></td>";
+        echo "</tr>";
+        echo "<tr><td colspan='2'><input class='addbtn' type='submit' value='Hoàn tất'></td></tr>";
+    }
+?>

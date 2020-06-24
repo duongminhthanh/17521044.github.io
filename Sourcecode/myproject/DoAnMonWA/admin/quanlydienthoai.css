@@ -1,0 +1,66 @@
+@import "admin.css";
+
+.mainzonetitle{
+    height: 40px;
+    background: #00bfbf;
+    color: white;
+}
+
+.mainzonename{
+    display: block;
+    float: left;
+    background: none;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 40px;
+    text-indent: 20px;
+}
+
+.mainzonebtn{
+    display: block;
+    float: right;
+    width: 100px;
+    background: none;
+    margin-right: 20px;
+}
+
+.addbtn{
+    height: 40px;
+    background-color: #1FDE25;
+    border-radius: 10px;
+    border: 1px solid #1FDE25;
+}
+
+.productshow{
+    width: 100%;
+}
+
+.product-table, td, th, tr{
+    border: 2px solid #00bfbf;
+    border-collapse: collapse;
+    height: 40px;
+    text-align: center;
+}
+
+.product-table{
+    width: 100%;
+}
+
+td,th:last-child{
+    width: auto;
+}
+
+.actionbtn{
+    width:60%;/*40*/
+    background: #00bfbf;
+    color: white;
+    text-align: center;
+    border: 1px solid #00bfbf;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.actionbtn:hover{
+    background: #00bfbf;
+}

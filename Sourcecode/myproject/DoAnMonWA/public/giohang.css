@@ -1,0 +1,53 @@
+@import "xemhang.css";
+
+.chitietgiohang{
+    padding: 10px;
+    display: block;
+    float: left;
+    width: 880px;
+    min-height: 200px;
+}
+
+.chitietgiohang table{
+    width:100%;
+}
+
+.chitietgiohang table, td, th, tr{
+    border: 2px solid #00bfbf;
+    border-collapse: collapse;
+    height: 40px;
+    text-align: center;
+}
+
+th{
+    background-color: #00bfbf;
+    color: white;
+}
+
+.tinhtien{
+    display: block;
+    padding: 10px;
+    width: 260px;
+    position: fixed;
+    right: 0px;
+}
+
+.addbtn{
+    margin-top: 20px;
+}
+
+.actionbtn{
+    width:40%;
+    background: #00bfbf;
+    color: white;
+    text-align: center;
+    border: 1px solid #00bfbf;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.actionbtn:hover{
+    background: #00bfbf;
+}
+

@@ -1,0 +1,53 @@
+@import "xemhang.css";
+
+.nhapthongtin{
+    display: block;
+    float: left;
+    width: 590px;
+}
+
+select{
+    height:40px;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+table tr td{
+    font-size: 20px;
+    border-bottom: 1px solid #00bfbf;
+    border-right: 1px solid #00bfbf;
+}
+
+input{
+    border: none;
+    outline: none;
+    background: white;
+    width: 100%;
+    font-size: 20px;
+}
+
+.xemtruoc{
+    display: block;
+    float: left;
+    width: 590px;
+    margin-left: 20px;
+    font-size: 25px;
+    line-height: 40px;
+}
+
+.xemtruoc h1{
+    font-size: 40px;
+    text-align: center;
+    margin: 10px 0px 10px 0px;
+}
+
+ul{
+    list-style-type: none;
+    text-indent: 10px;
+}
+
+.hienthigiohang{
+    width:100%;
+    text-align: center;
+}

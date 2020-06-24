@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Chi tiết đơn hàng</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="admin.js"></script>
+        <script language="javascript" src="chitietdonhang.js"></script>
+        <link rel="stylesheet" href="chitietdonhang.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                        </div>
+                    
+                    <!--<div style="float:right; border:none; background-color: #DCDCDC;">
+                        <a href="../public/login.html" target="_blank">Đăng nhập</a> |
+                        <a href="../public/signup.html" target="_blank">Đăng ký</a>
+                    </div>-->
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="../public/trangchu.html"><div class="headerlogo"></div></a>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <ul>
+                        <li class="navtitle">Danh Mục
+                        <li class="list">
+                            <a class="dropdownbtn" href="#">
+                                <div class="icon">
+                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                </div>
+                                <div class="name qlsp">Quản Lý Sản Phẩm</div>
+                            </a>
+                            <ul class="subnav">
+                                <li>
+                                    <a href="quanlydienthoai.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-mobile" aria-hidden="true" style="font-size:35px;"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Điện Thoại</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="quanlyphukien.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-headphones" aria-hidden="true"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Phụ Kiện</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        
+                        <li class="list">
+                            <a href="quanlykhachhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Quản Lý Khách Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="donhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Đơn Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="thongke.html">
+                                <div class="icon">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Thống Kê</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <?php
+                    include 'php/chitietdonhang.php';
+                ?>
+                <div class="mainzone">
+                    <div class="mainzonetitle">
+                        <div class="mainzonename">Chi Tiết Đơn Hàng</div>
+                        <div class="id">Id khách hàng:&nbsp;<span><?php echo $makh; ?></span></div>
+                        <!--<div class="mainzonebtn">
+                            <input class="addbtn" type="button" name="modify" value="Chỉnh Sửa">
+                        </div>-->
+                    </div>
+                    <div class="productshow">
+                        <div class="ajax_rs"></div>
+                            <table class="product-table">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>SL</th>
+                                    <th>Đơn giá</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                                <?php
+                                    $tongtien = 0;
+                                    while($row = $result->fetch_assoc()){
+                                        $sql1="select tensp, giasp from sanpham where masp=".$row['MASP'].";";
+                                        $result1 = $conn->query($sql1);
+                                        $row1 = $result1->fetch_array();
+                                        echo "<tr>";
+                                        echo "<td>".$row['MASP']."</td>";
+                                        echo "<td>".$row1[0]."</td>";
+                                        echo "<td class='sl'>".$row['SL']."</td>";
+                                        echo "<td class='dongia'>".$row1[1]."</td>";
+                                        echo "<td>";
+                                        //echo "<input class='actionbtn' type='button' name='detail' value='Xem'>";
+                                        echo "<input class='actionbtn' type='button' name='xoacthd' value='Xóa'>";
+                                        echo "</td>";
+                                        echo "</tr>";
+                                        $tongtien = $tongtien + intval($row['SL'])*intval($row1[1]);
+                                    }
+                                ?>
+                                <script>
+                                    var tongtien = "<?php echo $tongtien; ?>";
+                                    tongtien = parseFloat(tongtien);
+                                </script>
+                                <tr>
+                                    <th colspan="2">Thành tiền</th>
+                                    <td class="tongtien" colspan="3" style="color:red;font-weight: bold;font-size:30px"><?php echo $tongtien ?></td>
+                                </tr>
+                                
+                                <tr>
+                                    <th colspan="2">Trạng thái</th>
+                                    <?php
+                                        $sql="select * from cthd, hoadon hd where cthd.mahd=hd.mahd and cthd.mahd=$mahd";
+                                        $result = $conn->query($sql);
+                                        $row = $result->fetch_assoc();
+                                    ?>
+                                <script>
+                                    var trangthai = "<?php echo $row['TRANGTHAI'] ?>";
+                                    var mahd = "<?php echo $row['MAHD'] ?>";
+                                </script>
+                                    <td class="status" <?php if($row['TRANGTHAI']!=='FAIL'){ echo "colspan='2'";}else{echo "colspan='3'";} ?> >
+                                        <div class="fail"><input type="radio" name="status" value="FAIL"> HỦY</div>
+                                        <?php
+                                            if($row['TRANGTHAI']!=='FAIL'){
+                                                echo "<div class='waiting'><input type='radio' name='status' value='WAITING'> ĐANG CHỜ XỬ LÝ</div>";
+                                                echo "<div class='success'><input type='radio' name='status' value='SUCCESS'> ĐÃ HOÀN THÀNH</div>";
+                                            }
+                                        ?>
+                                        
+                                        
+                                    </td>
+                                    <?php
+                                        if($row['TRANGTHAI']!=='FAIL'){
+                                            echo "<td><input class='actionbtn modify' name='button' type='button' value='Xong'> </td>";
+                                        }
+                                    ?>
+                                    
+                                </tr>
+                            </table>
+                    </div>
+                </div>
+            </div>
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+        </div>
+    </body>
+</html>

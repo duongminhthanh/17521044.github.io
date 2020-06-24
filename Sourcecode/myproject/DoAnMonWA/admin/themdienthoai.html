@@ -1,0 +1,171 @@
+<?php
+    include 'php/themdienthoai.php';
+?>
+<html>
+    <head>
+        <title>Thêm điện thoại</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="navbar.js"></script>
+        <link rel="stylesheet" href="them.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                    </div>
+                    
+                    <!--<div style="float:right; border:none; background-color: #DCDCDC;">
+                        <a href="../public/login.html" target="_blank">Đăng nhập</a> |
+                        <a href="../public/signup.html" target="_blank">Đăng ký</a>
+                    </div>-->
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="../public/trangchu.html"><div class="headerlogo"></div></a>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <ul>
+                        <li class="navtitle">Danh Mục
+                        <li class="list">
+                            <a class="dropdownbtn" href="#">
+                                <div class="icon">
+                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                </div>
+                                <div class="name qlsp">Quản Lý Sản Phẩm</div>
+                            </a>
+                            <ul class="subnav">
+                                <li>
+                                    <a href="quanlydienthoai.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-mobile" aria-hidden="true" style="font-size:35px;"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Điện Thoại</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="quanlyphukien.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-headphones" aria-hidden="true"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Phụ Kiện</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        
+                        <li class="list">
+                            <a href="quanlykhachhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Quản Lý Khách Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="donhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Đơn Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="thongke.html">
+                                <div class="icon">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Thống Kê</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mainzone">
+                    <div class="mainzonetitle">
+                        <div class="mainzonename">Thêm Điện Thoại</div>
+                    </div>
+                    <div class="productshow">
+                        <form action="php/themdienthoai.php" method="POST" enctype="multipart/form-data">
+                            <table class="product-table">
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <td><input type="file" class="uploadbtn" name="img" accept="image/png"></td>
+                                </tr>
+                                <tr>
+                                    <th>Tên sản phẩm:</th>
+                                    <td><input type="text" name="name" autofocus></td>
+                                </tr>
+                                <tr>
+                                    <th>Màn hình:</th>
+                                    <td><input type="text" name="manhinh"></td>
+                                </tr>
+                                <tr>
+                                    <th>Hệ điều hành:</th>
+                                    <td><input type="text" name="hdh"></td>
+                                </tr>
+                                <tr>
+                                    <th>Camera sau:</th>
+                                    <td><input type="text" name="camsau"></td>
+                                </tr>
+                                <tr>
+                                    <th>Camera trước:</th>
+                                    <td><input type="text" name="camtruoc"></td>
+                                </tr>
+                                <tr>
+                                    <th>CPU:</th>
+                                    <td><input type="text" name="cpu"></td>
+                                </tr>
+                                <tr>
+                                    <th>RAM:</th>
+                                    <td><input type="text" name="ram"></td>
+                                </tr>
+                                <tr>
+                                    <th>Bộ nhớ trong:</th>
+                                    <td><input type="text" name="bnt"></td>
+                                </tr>
+                                <tr>
+                                    <th>Thẻ nhớ:</th>
+                                    <td><input type="text" name="thenho"></td>
+                                </tr>
+                                <tr>
+                                    <th>Thẻ sim:</th>
+                                    <td><input type="text" name="thesim"></td>
+                                </tr>
+                                <tr>
+                                    <th>Pin:</th>
+                                    <td><input type="text" name="pin"></td>
+                                </tr>
+                                <tr>
+                                    <th>Giá:</th>
+                                    <td><input type="number" name="gia"></td>
+                                </tr>
+                                <tr>
+                                    <th>Số lượng:</th>
+                                    <td><input type="number" name="sl"></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <input class="ctdt_submit" type="submit" name="submit" value="Hoàn Tất">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+        </div>
+    </body>
+</html>

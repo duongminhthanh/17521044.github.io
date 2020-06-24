@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<?php 
+    if(!isset($_SESSION['MAKH'])||!isset($_SESSION['TENKH'])){
+        header('Location: trangchu.html', true, 301);
+    }
+?>
+<?php
+    if(!isset($_SESSION['cart'])) 
+        { 
+            $_SESSION['cart']=array(); 
+        } 
+?>
+<html>
+    <head>
+        <title>Thông tin khách hàng</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="suathongtinkhachhang.js"></script>
+        <link rel="stylesheet" href="thongtinkhachhang.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="topbanner"></div>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                        </div>
+                    
+                     <div style="float:left; border:none; background-color: #00bfbf;">
+                    </div>
+                    
+                    <?php 
+                        if(!isset($_SESSION['MAKH'])||!isset($_SESSION['TENKH'])){
+                            echo "<div style='float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='login.html'>Đăng nhập</a> | ";
+                            echo "<a style='color:black;' href='signup.html'>Đăng ký</a>";
+                            echo "</div>";
+                        }else{
+                            echo "<div style=' float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='thongtinkhachhang.html'>".$_SESSION['TENKH']."</a> | ";
+                            echo "<a style='color:white;' href='php/dangxuat.php'>Đăng xuất</a>";
+                            echo "</div>";
+                        }
+                    ?>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="trangchu.html"><div class="headerlogo"></div></a>
+                <!--<div class="searchbar">
+                    <form action="#">
+                    <input type="text" placeholder=" Tìm kiếm...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>-->
+                <?php
+                    $tong = 0;
+                    foreach($_SESSION['cart'] as $sl){
+                        $tong += $sl;
+                    }
+                ?>
+                <div class="giohang">
+                    <a href="giohang.html">
+                        <div class="name">GIỎ HÀNG: &nbsp;</div>
+                        <span class="amount"><?php if($tong=='undefined'){echo 0;}else {echo $tong;} ?></span>
+                        <div class="carticon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <div class="navtitle">
+                        <div class="titleicon">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Danh Mục</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="xemhang.html?loai=ĐT">
+                                <div class="icon">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Điện Thoại</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="xemhang.html?loai=PK">
+                                <div class="icon">
+                                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Phụ Kiện</div>
+                            </a>
+                        </li>
+                        <script>
+                            function hotro(){
+                                alert('Liên hệ qua gmail: 17521238@gm.uit.edu.vn để được hỗ trợ!');
+                            }
+                        </script>
+                        <li onclick='return hotro()'>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Hỗ Trợ</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="ajax_rs"></div>
+                <div class="thongtinkhachhang">
+                    <div class="divname">[<?php echo $_SESSION['TENKH'];?>]</div>
+                    
+                        <?php include 'php/thongtinkhachhang.php' ?>
+                        <script>var makh = "<?php echo $_SESSION['MAKH']; ?>"</script>
+                        <table>
+                            <tr>
+                                <th>Tên khách hàng</th>
+                                <td>
+                                    <input type="text" name="edit_tenkh"  value="<?php echo $row['TENKH'] ?>">
+                                    <input class="actionbtn" type="button" value="sửa">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Số điện thoại</th>
+                                <td>
+                                    <input type="text" name="edit_sdt" value="<?php echo $row['SDT'] ?>">
+                                    <input class="actionbtn" type="button" value="sửa">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Ngày sinh</th>
+                                <td>
+                                    <input type="date" name="edit_ngsinh" value="<?php echo $row['NGAYSINH'] ?>">
+                                    <input class="actionbtn" type="button" value="sửa">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Địa chỉ giao hàng</th>
+                                <td>
+                                    <input type="text" name="edit_diachi" value="<?php echo $row['DIACHI'] ?>">
+                                    <input class="actionbtn" type="button" value="sửa">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>
+                                    <input type="text" name="edit_email" value="<?php echo $row['EMAIL'] ?>">
+                                    <input class="actionbtn" type="button" value="sửa">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Loại khách hàng</th>
+                                    <?php
+                                        echo "<td>";
+                                        if(strtoupper($row['LOAIKH'])=='VL'){
+                                            echo "Vãng Lai";
+                                        }
+                                        else{
+                                            echo "Thành Viên";
+                                        }
+                                        echo "</td>";
+                                    ?>
+                            </tr>
+                        </table>        
+                </div>
+                <div class="doimatkhau">
+                    <div class="divname">Đổi mật khẩu</div>
+                    <table>
+                        <tr>
+                            <th>Mật khẩu mới: </th>
+                            <td><input class='pass' type='password'></td>
+                        </tr>
+                        <tr>
+                            <th>Nhập lại: </th>
+                            <td><input class='repass' name="edit_mk" type='password'></td>
+                        </tr>
+                        <tr>
+                            <td class='nhacnho' colspan='2'></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input class='passbtn' type="button" value="Hoàn tất"></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="thongtinhoadon">
+                    <div class="divname">Thông tin hóa đơn của [<?php echo $_SESSION['TENKH'] ?>]</div>
+                    <!--<div style='text-align:center;'>Bạn chưa mua sản phẩm nào!</div>-->
+                    <div class='hoadon'>
+                        <table>
+                            <tr>
+                                <th>Mã HD</th>
+                                <th>Tổng tiền</th>
+                                <th>Ngày xuất</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            <?php include 'php/inthongtinhoadon.php'; ?>
+                            <!--<tr>
+                                <td>test</td>
+                                <td>test</td>
+                                <td>test</td>
+                                <td><input style='width:90%;' class='actionbtn' type='button' name='' value='Xem'></td>
+                            </tr>-->
+                        </table>
+                    </div>
+                    <div class='cthd'>
+                        <table>
+                            <tr>
+                                <th colspan='2'>Mã HD</th>
+                                <td>Hãy chọn xem một hóa đơn ở bên trái!</td>
+                            </tr>
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>SL</th>
+                                <th>Giá</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="webfooter">
+                    Trường Đại Học Công Nghệ Thông Tin<br>
+                    Đồ án Web Application<br>
+                </div>
+            </div>
+    </body>
+</html>

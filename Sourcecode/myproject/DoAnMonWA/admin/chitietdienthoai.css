@@ -1,0 +1,48 @@
+@import "quanlydienthoai.css";
+
+.mainzonebtn{
+    margin-right: 50px;
+}
+
+.addbtn{
+    width: 120px;
+}
+
+input{
+    width: 88%;
+    height: 90%;
+    max-height: 90%;
+    font-size: 20px;
+}
+
+td,th:last-child{
+    width: auto;
+}
+
+.id{
+    font-size: 20px;
+}
+
+.ctdt_submit{
+    font-size: 30px;
+    padding: 10px 0;
+    background: #00bfbf;
+    border: 1px solid #00bfbf;
+    color: white;
+    cursor: pointer;
+}
+
+select{
+    height:40px;
+    width: 99%;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.uploadbtn{
+    height: 30px;
+}
+
+.actionbtn{
+    width:10%;
+}

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<?php session_start(); ?>
+<?php
+    if(!isset($_SESSION['cart'])) 
+        { 
+            $_SESSION['cart']=array(); 
+        } 
+?>
+<html>
+    <head>
+        <title>Trang chủ</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="trangchu.js"></script>
+        <script language="javascript" src="themhang.js"></script>
+        <script language="javascript" src="timkiemsp.js"></script>
+        <link rel="stylesheet" href="trangchu.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    
+    
+    <body>
+        
+        <div class="topbanner">
+        </div>
+        
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #00bfbf;">
+                    </div>
+                    
+                    <?php 
+                        if(!isset($_SESSION['MAKH'])||!isset($_SESSION['TENKH'])){
+                            echo "<div style='float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='login.html'>Đăng nhập</a> | ";
+                            echo "<a style='color:white;' href='signup.html'>Đăng ký</a>";
+                            echo "</div>";
+                        }else{
+                            echo "<div style=' float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='thongtinkhachhang.html'>".$_SESSION['TENKH']."</a> | ";
+                            echo "<a style='color:white;' href='php/dangxuat.php'>Đăng xuất</a>";
+                            echo "</div>";
+                        }
+                    ?>
+                    <!--<div style="float:right; border:none; background-color: #DCDCDC;">
+                        <a href="login.html" target="_blank">Đăng nhập</a> |
+                        <a href="signup.html" target="_blank">Đăng ký</a>
+                    </div>-->
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="trangchu.html"><div class="headerlogo"></div></a>
+                <!--<div class="searchbar">
+                    <input type="text" class="search_value" placeholder=" Tìm kiếm theo tên...">
+                    <button type="button" class="search"><i class="fa fa-search"></i></button>
+                </div>-->
+                
+                <?php
+                    $tong = 0;
+                    foreach($_SESSION['cart'] as $sl){
+                        $tong += $sl;
+                    }
+                ?>
+                <div class="giohang">
+                    <a href="giohang.html">
+                        <div class="name">GIỎ HÀNG:&nbsp;</div>
+                        <span class="amount"><?php if($tong=='undefined'){echo 0;}else {echo $tong;} ?></span>
+                        <div class="carticon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <ul>
+                        <li class="navtitle">Danh Mục</li>
+                        <li class="list">
+                            <a href="xemhang.html?loai=ĐT">
+                                <div class="icon" style="margin-right:25px;">
+                                    <i class="fa fa-mobile" aria-hidden="true" style="font-size:35px;"></i>
+                                </div>
+                                <div class="name">Điện Thoại</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="xemhang.html?loai=PK">
+                                <div class="icon">
+                                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Phụ Kiện</div>
+                            </a>
+                        </li>
+                        <script>
+                            function hotro(){
+                                alert('Liên hệ qua gmail: 17521238@gm.uit.edu.vn để được hỗ trợ!');
+                            }
+                        </script>
+                        <li class="list" onclick='return hotro()'>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                
+                                <div class="name">Hỗ Trợ</div>
+                            </a>
+                        </li>
+                        <li class="navtitle">Top Điện Thoại Bán Chạy</li>
+                        <?php
+                            $sql = "select SANPHAM.MASP as MASP,TENSP,GIASP "
+                                    . "from cthd, sanpham, hoadon "
+                                    . "where cthd.masp=sanpham.masp and cthd.mahd=hoadon.mahd and upper(trangthai)='SUCCESS' and upper(loai)='ĐT' "
+                                    . "group by sanpham.masp "
+                                    . "order by sum(sl) desc "
+                                    . "limit 3";
+                        ?>
+                        <?php include 'php/top3banchay.php' ?>
+                        <!--<li class="list"><a href="chitietsp.html">Điện Thoại 1</a></li>
+                        <li class="list"><a href="chitietsp.html">Điện Thoại 2</a></li>
+                        <li class="list"><a href="chitietsp.html">Điện Thoại 3</a></li>-->
+                        <li class="navtitle">Top Phụ Kiện Bán Chạy</li>
+                        <?php
+                            $sql = "select SANPHAM.MASP as MASP,CONCAT(SUBSTRING(`TENSP`, 1, 33),'...') as TENSP ,GIASP "
+                                    . "from cthd, sanpham, hoadon "
+                                    . "where cthd.masp=sanpham.masp and cthd.mahd=hoadon.mahd and upper(trangthai)='SUCCESS' and upper(loai)='PK' "
+                                    . "group by sanpham.masp "
+                                    . "order by sum(sl) desc "
+                                    . "limit 3";
+                        ?>
+                        <?php include 'php/top3banchay.php' ?>
+                        <!--<li class="list"><a href="chitietsp.html">Phụ kiện 1</a></li>
+                        <li class="list"><a href="chitietsp.html">Phụ kiện 2</a></li>
+                        <li class="list"><a href="chitietsp.html">Phụ kiện 3</a></li>-->
+                    </ul>
+                </div>
+                
+                <div class="mainbanner">
+                    <div class="slides">
+                        <input type="radio" name="r" id="r1" checked>
+                        <input type="radio" name="r" id="r2">
+                        <input type="radio" name="r" id="r3">
+                        <input type="radio" name="r" id="r4">
+                        <div class="slide s1">
+                            <img src="mainbanner/1.jpg" alt="">
+                        </div>
+                        <div class="slide">
+                            <img src="mainbanner/2.jpg" alt="">
+                        </div>
+                        <div class="slide">
+                            <img src="mainbanner/3.jpg" alt="">
+                        </div>
+                        <div class="slide">
+                            <img src="mainbanner/4.jpg" alt="">
+                        </div>
+                    </div>
+                    
+                    <div class="imgnav">
+                        <label for="r1" class="bar bar1"></label>
+                        <label for="r2" class="bar"></label>
+                        <label for="r3" class="bar"></label>
+                        <label for="r4" class="bar"></label>
+                    </div>
+                </div>
+                
+                <div class="ajax_rs"></div>
+                <div class="curhot">
+                    <div class="saletitle">Điện Thoại Đáng Chú Ý!</div>
+                    <?php
+                        $sql = "select SANPHAM.MASP as MASP,TENSP,GIASP,URL "
+                                . "from cthd, sanpham, hoadon, image "
+                                . "where sanpham.masp=image.masp and cthd.masp=sanpham.masp and cthd.mahd=hoadon.mahd and upper(trangthai)='SUCCESS' and upper(loai)='ĐT' "
+                                . "group by sanpham.masp "
+                                . "order by sum(sl) desc "
+                                . "limit 3";
+                    ?>
+                    <?php include 'php/sanphamhot.php'; ?>
+                    <!--<div class="highlight">
+                        <a href="chitietsp.html">
+                            <div><img></div>
+                        </a>
+                        <div></div>
+                        <div></div>
+                        <input class="addbtn" type="button" value="Thêm Vào Giỏ Hàng"/>
+                    </div>
+                    <div class="sale">
+                        <a href="chitietsp.html">
+                            <div><img></div>
+                        </a>
+                        <div></div>
+                        <div></div>
+                        <input class="addbtn" type="button" value="Thêm Vào Giỏ Hàng"/>
+                    </div>
+                    <div class="sale">
+                        <a href="chitietsp.html">
+                            <div><img></div>
+                        </a>
+                        <div></div>
+                        <div></div>
+                        <input class="addbtn" type="button" value="Thêm Vào Giỏ Hàng"/>
+                    </div>-->
+                </div>
+            
+                <div class="curhot">
+                    <div class="saletitle">Phụ Kiện Đáng Chú Ý!</div>
+                    <?php
+                        $sql = "select SANPHAM.MASP as MASP,TENSP,GIASP,URL "
+                                . "from cthd, sanpham, hoadon, image "
+                                . "where sanpham.masp=image.masp and cthd.masp=sanpham.masp and cthd.mahd=hoadon.mahd and upper(trangthai)='SUCCESS' and upper(loai)='PK' "
+                                . "group by sanpham.masp "
+                                . "order by sum(sl) desc "
+                                . "limit 3";
+                    ?>
+                    <?php include 'php/sanphamhot.php'; ?>
+                    <!--<div class="highlight">
+                        <a href="chitietsp.html">
+                            <div><img></div>
+                        </a>
+                        <div></div>
+                        <div></div>
+                        <input class="addbtn" type="button" value="Thêm Vào Giỏ Hàng"/>
+                    </div>
+                    <div class="sale">
+                        <a href="chitietsp.html">
+                            <div><img></div>
+                        </a>
+                        <div></div>
+                        <div></div>
+                        <input class="addbtn" type="button" value="Thêm Vào Giỏ Hàng"/>
+                    </div>
+                    <div class="sale">
+                        <a href="chitietsp.html">
+                            <div><img></div>
+                        </a>
+                        <div></div>
+                        <div></div>
+                        <input class="addbtn" type="button" value="Thêm Vào Giỏ Hàng"/>
+                    </div>-->
+                </div>
+                
+            </div>
+            
+            
+            
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>

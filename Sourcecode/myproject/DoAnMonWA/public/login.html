@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<?php session_start();  ?>
+<html>
+    <head>
+        <title>Đăng nhập</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="login.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="dangnhap.js"></script>
+    </head>
+    <body>
+        <div>
+            <div class="login-box">
+                <h1>Đăng nhập</h1>
+                <div class="text-box">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <input class='tendn' type="text" placeholder="Tài khoản"/>
+                </div>
+                <div class="text-box">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <input class='matkhau' type="password" placeholder="Mật khẩu"/>
+                </div>
+                <input class="btn" type="button" value="Đăng Nhập"/><br>
+                Chưa có tài khoản? <a href="signup.html" style="color:#DE1F1F;"><i>Đăng ký ngay</i></a> |
+                <a href="trangchu.html" style="color:#DE1F1F;"><i>VỀ TRANG CHỦ</i></a><br>
+                <div class='ajax_rs' style='margin-top:20px;'></div>
+            </div>
+        </div>
+    </body>
+</html>

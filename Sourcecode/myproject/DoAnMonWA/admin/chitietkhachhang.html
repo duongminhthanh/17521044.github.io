@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Chi tiết khách hàng</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="admin.js"></script>
+        <script language="javascript" src="suathongtin.js"></script>
+        <script>
+            $("document").ready(function(){
+                suathongtin(makh,"php/suathongtin.php");
+            });
+        </script>
+        <link rel="stylesheet" href="chitietkhachhang.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                      </div>
+                    
+                    <!--<div style="float:right; border:none; background-color: #DCDCDC;">
+                        <a href="../public/login.html" target="_blank">Đăng nhập</a> |
+                        <a href="../public/signup.html" target="_blank">Đăng ký</a>
+                    </div>-->
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="../public/trangchu.html"><div class="headerlogo"></div></a>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <ul>
+                        <li class="navtitle">Danh Mục
+                        <li class="list">
+                            <a class="dropdownbtn" href="#">
+                                <div class="icon">
+                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                </div>
+                                <div class="name qlsp">Quản Lý Sản Phẩm</div>
+                            </a>
+                            <ul class="subnav">
+                                <li>
+                                    <a href="quanlydienthoai.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-mobile" aria-hidden="true" style="font-size:35px;"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Điện Thoại</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="quanlyphukien.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-headphones" aria-hidden="true"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Phụ Kiện</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        
+                        <li class="list">
+                            <a href="quanlykhachhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Quản Lý Khách Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="donhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Đơn Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="thongke.html">
+                                <div class="icon">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Thống Kê</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mainzone">
+                    <div class="mainzonetitle">
+                        <div class="mainzonename">Chi Tiết Khách Hàng</div>
+                        <!--<div class="mainzonebtn">
+                            <input class="addbtn" type="button" name="modify" value="Chỉnh Sửa">
+                        </div>-->
+                    </div>
+                    <div class="productshow">
+                        <div class="ajax_rs"></div>
+                            <?php include 'php/chitietkhachhang.php' ?>
+                            <table class="product-table">
+                                <tr>
+                                    <th>Id khách hàng:</th>
+                                    <td><span class="id"><?php echo $row['MAKH'] ?></span></td>
+                                    <script>var makh = "<?php echo $row['MAKH'] ?>"</script>
+                                </tr>
+                                <tr>
+                                    <th>Tên khách hàng</th>
+                                    <td>
+                                        <input type="text" name="edit_tenkh"  value="<?php echo $row['TENKH'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Tên đăng nhập</th>
+                                    <td>
+                                        <input type="text" name="edit_tendn" value="<?php echo $row['TENDANGNHAP'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Mật khẩu</th>
+                                    <td>
+                                        <input type="text" name="edit_mk" value="<?php echo $row['MATKHAU'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Số điện thoại</th>
+                                    <td>
+                                        <input type="text" name="edit_sdt" value="<?php echo $row['SDT'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Ngày sinh</th>
+                                    <td>
+                                        <input type="date" name="edit_ngsinh" value="<?php echo $row['NGAYSINH'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Địa chỉ giao hàng</th>
+                                    <td>
+                                        <input type="text" name="edit_diachi" value="<?php echo $row['DIACHI'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>
+                                        <input type="text" name="edit_email" value="<?php echo $row['EMAIL'] ?>">
+                                        <input class="actionbtn" type="button" value="sửa">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Loại khách hàng</th>
+                                        <?php
+                                            echo "<td>";
+                                            if(strtoupper($row['LOAIKH'])=='VL'){
+                                                echo "<select name='edit_loaikh'><option value='VL' selected>";
+                                                echo "Vãng Lai";
+                                                echo "</option><option value='TV'>";
+                                                echo "Thành Viên";
+                                                echo "</option></select>";
+                                            }
+                                            else{
+                                                echo "<select name='edit_loaikh'><option value='VL'>";
+                                                echo "Vãng Lai";
+                                                echo "</option><option value='TV' selected>";
+                                                echo "Thành Viên";
+                                                echo "</option></select>";
+                                            }
+                                            echo "<input class='actionbtn' type='button' value='sửa'>";
+                                            echo "</td>";
+                                        ?>
+                                </tr>
+                            </table>        
+                    </div>
+                </div>
+            </div>
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+@import "quanlydienthoai.css";
+
+tr th,td:first-child{
+    min-width:40px;
+}

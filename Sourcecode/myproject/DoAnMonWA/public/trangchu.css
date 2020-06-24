@@ -1,0 +1,266 @@
+@import "general.css";
+
+.navtitle{
+    background: #00bfbf;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar{
+    width: 300px;
+    float:left;
+}
+
+.navbar ul{
+    list-style-type: none;
+    float: left;
+}
+
+.navbar ul li{
+    height: 40px;
+    line-height: 40px;
+    width: 290px;
+    padding-left: 10px;
+    text-indent: 10px;
+    display: block;
+}
+
+.navbar ul li a{
+    display: block;
+    float: left;
+    width: 290px;
+    height: 40px;
+}
+
+.icon{
+    display: block;
+    float: right;
+    width:50px;
+    height: 40px;
+    margin-right: 30px;
+    background-color: transparent;
+}
+
+.icon i{
+    font-size: 25px;
+    width:100%;
+    height:100%;
+    line-height: 40px;
+}
+
+.navbar ul .list{
+    width:0px;
+    background: #00bfbf;
+    transition: width .5s linear;
+    display: block;
+}
+
+.navbar ul .list:hover{
+    width: 290px;
+    background: #00bfbf;
+}
+
+.navbar ul li a{
+    transition: color .5s ease;
+}
+
+.navbar ul li a:hover{
+    color: white;
+}
+
+.mainbanner{
+    float: left;
+    height: 480px;
+    width: 880px;
+    margin-left: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.imgnav{
+    position: absolute;
+    bottom: 5%;
+    left: 35%;
+    width: 260px;
+    margin: 0 auto;
+    background: none;
+}
+
+.bar{
+    display: inline-block;
+    width: 50px;
+    height: 10px;
+    border: 2px solid white;
+    margin-left: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.bar1{
+    background:white;
+}
+
+.bar:hover{
+    background: white;
+}
+
+input[name="r"]{
+    position: absolute;
+    visibility: hidden;
+}
+
+.slides{
+    width: 400%;
+    height: 100%;
+}
+
+.slide{
+    width: 25%;
+    transition: 0.6s;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+/*.s1{
+    animation: mymove 20s infinite;
+}
+
+@keyframes mymove{
+    0%{margin-left: 0;}
+    20%{margin-left: 0;}
+    25%{margin-left: -25%;}
+    45%{margin-left: -25%;}
+    50%{margin-left: -50%;}
+    70%{margin-left: -50%;}
+    75%{margin-left: -75%;}
+    95%{margin-left: -75%;}
+    100%{margin-left: 0;}
+}*/
+
+.slide img{
+    display: inline-block;
+}
+
+#r1:checked ~ .s1{
+    margin-left: 0;
+}
+#r2:checked ~ .s1{
+    margin-left: -25%;
+}
+#r3:checked ~ .s1{
+    margin-left: -50%;
+}
+#r4:checked ~ .s1{
+    margin-left: -75%;
+}
+
+.saletitle{
+    background: #00bfbf;
+    color: white;
+    font-size: 20px;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    float: left;
+    width: 100%;
+}
+
+.curhot{
+    margin-top: 20px;
+    border: none;
+    font-size: 20px;
+    overflow: auto;
+    float: left;
+}
+
+.curhot div{
+    border-right: 1px dotted #00bfbf;
+}
+
+.curhot div:first-child{
+    border: none;
+}
+.highlight{
+    width: 597px;
+    height: 400px;
+    float: left;
+    text-align: center;
+    overflow: auto;
+}
+
+.highlight div{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    text-align: center;
+    border: none;
+}
+
+.sale{
+    width: 300px;
+    height: 400px;
+    float: left;
+    text-align: center;
+}
+
+.sale div{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    text-align: center;
+    border: none;
+}
+
+.highlight a div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    float: left;
+    width: 100%; 
+    height: 290px;
+}
+
+.highlight a div img{
+    width:40%;
+    height:90%;
+}
+
+/*.highlight a div:after{
+    content:"";
+    width:100px;
+    height:100px;
+    background-image: url("https://banner2.cleanpng.com/20180515/gqq/kisspng-bestseller-logo-sales-the-new-york-times-best-sell-5afb0f4d915518.2098192315264028935953.jpg");
+    background-size: 100px 100px;
+    background-repeat: no-repeat;
+}*/
+
+.sale a div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    float: left;
+    width: 100%;
+    height: 290px;
+}
+
+.sale a div img{
+    width:80%;
+    height:90%;
+}
+
+.webfooter{
+    background: #00bfbf;
+    color: white;
+    text-align: center;
+    height: 200px;
+    line-height: 100px;
+    margin-top: 20px;
+    clear: both;
+}

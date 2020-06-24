@@ -1,0 +1,168 @@
+<?php session_start(); ?>
+<?php
+    if(!isset($_SESSION['cart'])) 
+        { 
+            $_SESSION['cart']=array(); 
+        } 
+?>
+<html>
+    <head>
+        <title>Chi tiết</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <link rel="stylesheet" href="chitietsp.css" type="text/css">
+        <script language="javascript" src="themhang.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+        <div class="topbanner">
+        </div>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                       </div>
+                    
+                     <div style="float:left; border:none; background-color: #00bfbf;">
+                    </div>
+                    
+                    <?php 
+                        if(!isset($_SESSION['MAKH'])||!isset($_SESSION['TENKH'])){
+                            echo "<div style='float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='login.html'>Đăng nhập</a> | ";
+                            echo "<a style='color:black' href='signup.html'>Đăng ký</a>";
+                            echo "</div>";
+                        }else{
+                            echo "<div style=' float:right; border:none; background-color: #00bfbf;'>";
+                            echo "<a style='color:white;' href='thongtinkhachhang.html'>".$_SESSION['TENKH']."</a> | ";
+                            echo "<a style='color:white;' href='php/dangxuat.php'>Đăng xuất</a>";
+                            echo "</div>";
+                        }
+                    ?>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="trangchu.html"><div class="headerlogo"></div></a>
+                <!--<div class="searchbar">
+                    <form action="#">
+                    <input type="text" placeholder=" Tìm kiếm...">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>-->
+                <?php
+                    $tong = 0;
+                    foreach($_SESSION['cart'] as $sl){
+                        $tong += $sl;
+                    }
+                ?>
+                <div class="giohang">
+                    <a href="giohang.html">
+                        <div class="name">GIỎ HÀNG: &nbsp;</div>
+                        <span class="amount"><?php if($tong=='undefined'){echo 0;}else {echo $tong;} ?></span>
+                        <div class="carticon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <div class="navtitle">
+                        <div class="titleicon">
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </div>
+                        <div class="title">Danh Mục</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <a href="xemhang.html?loai=ĐT">
+                                <div class="icon">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Điện Thoại</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="xemhang.html?loai=PK">
+                                <div class="icon">
+                                    <i class="fa fa-headphones" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Phụ Kiện</div>
+                            </a>
+                        </li>
+                        <script>
+                            function hotro(){
+                                alert('Liên hệ qua gmail: 17521238@gm.uit.edu.vn để được hỗ trợ!');
+                            }
+                        </script>
+                        <li onclick='return hotro()'>
+                            <a href="#">
+                                <div class="icon">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Hỗ Trợ</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <?php include 'php/chitietsp.php' ?>
+            <div class="ajax_rs"></div>
+            <div class="detailshow">
+                <div class="productimage">
+                    <img src="<?php echo $row2[0] ?>">
+                </div>
+                <div class="productdetail">
+                    <div class="thongso">Thông Số Kỹ Thuật</div>
+                    <ul>
+                        <?php
+                            if(strtoupper($row['LOAI'])=='ĐT'){
+                                echo "<li>Tên Sản Phẩm: <span class='tensp'>".$row['TENSP']."</span></li>";
+                                echo "<li>Màn Hình: <span class='manhinh'>".$row['MANHINH']."</span></li>";
+                                echo "<li>Hệ Điều Hành: <span class='hedieuhanh'>".$row['HEDIEUHANH']."</span></li>";
+                                echo "<li>Camera Sau: <span class='camsau'>".$row['CAMSAU']."</span></li>";
+                                echo "<li>Camera Trước: <span class='camtruoc'>".$row['CAMTRUOC']."</span></li>";
+                                echo "<li>CPU: <span class='cpu'>".$row['CPU']."</span></li>";
+                                echo "<li>RAM: <span class='ram'>".$row['RAM']."</span></li>";
+                                echo "<li>Bộ Nhớ Trong: <span class='bonhotrong'>".$row['BONHOTRONG']."</span></li>";
+                                echo "<li>Thẻ Nhớ: <span class='thenho'>".$row['THENHO']."</span></li>";
+                                echo "<li>Thẻ Sim: <span class='thesim'>".$row['THESIM']."</span></li>";
+                                echo "<li>Pin: <span class='pin'>".$row['PIN']."</span></li>";
+                                echo "<li>Giá:<span class='gia'>".number_format($row['GIASP'] , 0, ',', '.')." VNĐ"."</span></li>";
+                                }else{
+                                echo "<li>Tên Sản Phẩm: <span class='tensp'>".$row['TENSP']."</span></li>";
+                                echo "<li>Giá:<span class='gia'>".number_format($row['GIASP'] , 0, ',', '.')." VNĐ"."</span></li>";
+                                }
+                        ?>
+                        <!--<li>Tên Sản Phẩm: <span class="tensp"><?php echo $row['TENSP'] ?></span></li>
+                        <li>Màn Hình: <span class="manhinh"><?php echo $row['MANHINH'] ?></span></li>
+                        <li>Hệ Điều Hành: <span class="hedieuhanh"><?php echo $row['HEDIEUHANH'] ?></span></li>
+                        <li>Camera Sau: <span class="camsau"><?php echo $row['CAMSAU'] ?></span></li>
+                        <li>Camera Trước: <span class="camtruoc"><?php echo $row['CAMTRUOC'] ?></span></li>
+                        <li>CPU: <span class="cpu"><?php echo $row['CPU'] ?></span></li>
+                        <li>RAM: <span class="ram"><?php echo $row['RAM'] ?></span></li>
+                        <li>Bộ Nhớ Trong: <span class="bonhotrong"><?php echo $row['BONHOTRONG'] ?></span></li>
+                        <li>Thẻ Nhớ: <span class="thenho"><?php echo $row['THENHO'] ?></span></li>
+                        <li>Thẻ Sim: <span class="thesim"><?php echo $row['THESIM'] ?></span></li>
+                        <li>Pin: <span class="pin"><?php echo $row['PIN'] ?></span></li>
+                        <li>Giá:<span class="gia"><?php echo number_format($row['GIASP'] , 0, ',', '.')." VNĐ" ?></span></li>-->
+                    </ul>
+                    
+                    <input class="addbtn" type="button" name="<?php echo $row['MASP']; ?>" value="Thêm Vào Giỏ Hàng">
+                </div>
+            </div>
+            
+            
+            
+        </div>
+        
+        <div class="webfooter">
+            Trường Đại Học Công Nghệ Thông Tin<br>
+          Đồ án Web Application<br>
+        </div>
+    </body>
+</html>

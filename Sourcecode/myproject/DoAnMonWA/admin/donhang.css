@@ -1,0 +1,15 @@
+@import "quanlykhachhang.css";
+
+.phanloai{
+    display: block;
+    float: right;
+    background: none;
+    line-height: 40px;
+    margin-right: 20px;
+}
+
+.phanloai select{
+    width: 200px;
+    height:30px;
+    font-size: 15px;
+}

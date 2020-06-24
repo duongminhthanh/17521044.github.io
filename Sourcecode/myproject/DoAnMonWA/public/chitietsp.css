@@ -1,0 +1,70 @@
+@import "xemhang.css";
+
+.detailshow{
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+    background: #DCDCDC;
+}
+
+.productimage{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    float: left;
+    width: 500px;
+    height: 600px;
+}
+
+.productimage img{
+    width:80%;
+    height:85%;
+}
+
+.productdetail{
+    display: block;
+    float: left;
+    margin-left: 20px;
+    width: 680px;
+    height: 600px;
+    line-height: 35px;
+    font-size: 25px;
+    position: relative;
+}
+
+.thongso{
+    display: block;
+    font-size: 40px;
+    text-align: center;
+    color:#00bfbf;
+    height: 60px;
+    line-height: 60px;
+}
+
+ul{
+    list-style-type: none;
+    text-indent: 10px;
+}
+
+ul li{
+    display: block;
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.productdetail span{
+    font-weight: bold;
+}
+
+.gia{
+    display: block;
+    float: right;
+    margin-top: 10px;
+    font-size: 50px;
+    margin-right: 20px;
+    color: #00bfbf;
+}
+
+.addbtn{
+    position: absolute;
+    bottom: 0px;
+}

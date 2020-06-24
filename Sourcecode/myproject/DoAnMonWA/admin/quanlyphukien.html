@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Quản lý phụ kiện</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script language="javascript" src="admin.js"></script>
+        <script language="javascript" src="quanlysanpham.js"></script>
+        <script language="javascript" src="timkiemsp.js"></script>
+        <link rel="stylesheet" href="quanlyphukien.css" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script>var loai = 'PK';</script>
+    </head>
+    
+    <body>
+        <div class="container">
+            <div class="webheader1">
+                <div class="login">
+                    
+                    <div style="float:left; border:none; background-color: #DCDCDC;">
+                       </div>
+                    
+                    <!--<div style="float:right; border:none; background-color: #DCDCDC;">
+                        <a href="../public/login.html" target="_blank">Đăng nhập</a> |
+                        <a href="../public/signup.html" target="_blank">Đăng ký</a>
+                    </div>-->
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="webheader2">
+                <a href="../public/trangchu.html"><div class="headerlogo"></div></a>
+                <div class="searchbar">
+                    <input type="text" name='searchbar' class="search_value" placeholder=" Tìm kiếm theo tên hoặc mã...">
+                    <button type="button" class="search"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="navbar">
+                    <ul>
+                        <li class="navtitle">Danh Mục</li>
+                        <li class="list">
+                            <a class="dropdownbtn" href="#">
+                                <div class="icon">
+                                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                                </div>
+                                <div class="name qlsp">Quản Lý Sản Phẩm</div>
+                            </a>
+                            <ul class="subnav">
+                                <li>
+                                    <a href="quanlydienthoai.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-mobile" aria-hidden="true" style="font-size:35px;"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Điện Thoại</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="quanlyphukien.html">
+                                        <!--<div class="icon">
+                                            <i class="fa fa-headphones" aria-hidden="true"></i>
+                                        </div>-->
+                                        <div class="name">+Quản Lý Phụ Kiện</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="list">
+                            <a href="quanlykhachhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-address-card" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Quản Lý Khách Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="donhang.html">
+                                <div class="icon">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Đơn Hàng</div>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="thongke.html">
+                                <div class="icon">
+                                    <i class="fa fa-bar-chart" aria-hidden="true"></i>
+                                </div>
+                                <div class="name">Thống Kê</div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="mainzone">
+                    <div class="mainzonetitle">
+                        <div class="mainzonename">Quản Lý Phụ Kiện</div>
+                        <div class="mainzonebtn">
+                            <a href="themphukien.html"><input class="addbtn" type="button" value="Thêm +"></a>
+                        </div>
+                    </div>
+                    <div class="productshow">
+                        <div class="ajax_rs"></div>
+                        <table class="product-table">
+                            <tr>
+                                <th>Id</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Giá</th>
+                                <th>Số lượng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            <!--<tr>-->
+                                <?php
+                                    include 'php/quanlyphukien.php';
+                                ?>
+                                <!--<td>
+                                    <a href="chitietdienthoai.html" target="_blank">
+                                        <input class="actionbtn" type="button" name="detail" value="Xem">
+                                    </a>
+                                    <input class="actionbtn" type="button" name="delete" value="Xóa">
+                                </td>
+                            </tr>-->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="webfooter">
+                Trường Đại Học Công Nghệ Thông Tin<br>
+                Đồ án Web Application<br>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,187 @@
+@import "general.css";
+
+.navtitle{
+    background: #00bfbf;
+    width: 300px;
+    display: block;
+    float: left;
+}
+
+.title{
+    height: 40px;
+    line-height: 40px;
+    background: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+    padding-left: 10px;
+}
+
+.titleicon{
+    padding-right: 20px;
+    background: none;
+}
+
+.titleicon i{
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    font-size: 30px;
+    color: #00bfbf;
+    display: block;
+}
+
+
+.navbar{
+    width: 100%;
+}
+
+.navbar ul{
+    list-style-type: none;
+    overflow: auto;
+}
+
+.navbar ul li{
+    display: block;
+    float: left;
+    height: 40px;
+    width: 299px;
+    line-height: 40px;
+    border-right: 1px solid #00bfbf;
+    background: #696969;
+    transition: width .3s linear;
+}
+
+.navbar ul li:last-child{
+    border: none;
+}
+
+.navbar ul li a{
+    color: white;   
+    display: block;
+    width: 300px;
+    float: left;
+    transition: background .3s linear;
+}
+
+/*.navbar:hover ul li{
+    width: 299px;
+}*/
+
+.navbar ul li a:hover{
+    background: #00bfbf;
+}
+
+.icon{
+    display: block;
+    float: right;
+    margin-right: 50px;
+    background: none;
+}
+
+.icon i{
+    font-size: 25px;
+    display: block;
+    line-height: 40px;
+}
+
+.amount{
+    font-weight: bold;
+}
+
+.name{
+    display: block;
+    float: left;
+    padding-left: 10px;
+    background-color: transparent;
+}
+
+.filter{
+    float: left;
+    margin-top: 10px;
+}
+
+.filterlist{
+    width: 438px;
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 10px;
+    border: 1px solid #00bfbf;
+}
+
+.showdiv{
+    background: #00bfbf;
+    float: left;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.showdiv1{
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.showdiv1:first-child{
+    margin:0;
+}
+
+.showdiv1 div{
+    width: 298px;
+    height: 400px;
+    border: 1px dotted #00bfbf;
+    border-bottom: none;
+    float: left;
+}
+
+.showdiv1 div a div{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    float: left;
+    width: 100%;
+    height: 290px;
+}
+
+.showdiv1 div a div img{
+    width:80%;
+    height:90%;
+}
+
+.showdiv1 div div{
+    display: block;
+    float: left;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: left;
+    text-align: center;
+    border: none;
+    
+    /*white-space: pre-wrap;      
+    white-space: -moz-pre-wrap;    
+    white-space: -pre-wrap;      
+    white-space: -o-pre-wrap; 
+    word-wrap: break-word;*/
+}
+
+select{
+    width: 300px;
+    height: 80%;
+    font-size: 16px;
+}
+
+.webfooter{
+    float: left;
+    width: 100%;
+    background: #00bfbf;
+    color: white;
+    text-align: center;
+    height: 200px;
+    line-height: 100px;
+    margin-top: 20px;
+    clear: both;
+}
